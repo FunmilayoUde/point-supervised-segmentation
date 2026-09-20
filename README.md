@@ -12,7 +12,7 @@ remedy for the severe class imbalance in this data, does not improve mean mIoU
 at any budget tested; it reduces the spread across seeds by roughly a factor of
 three.
 
-**[Read the report (PDF, 10 pages)](outputs/report/Partial_CE_Point_Supervision_Report.pdf)**
+**[Read the report in your browser](https://funmilayoude.github.io/point-supervised-segmentation/outputs/report/Partial_CE_Point_Supervision_Report.pdf)** (PDF, 10 pages) · [download](outputs/report/Partial_CE_Point_Supervision_Report.pdf)
 
 ![mIoU against label budget, uniform and stratified sampling, with the fully
 supervised ceiling and majority-class floor marked](outputs/fig1_budget_curve.png)
