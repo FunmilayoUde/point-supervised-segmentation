@@ -1,5 +1,7 @@
 # Partial cross-entropy for point-supervised land-cover segmentation
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22861209.svg)](https://doi.org/10.5281/zenodo.22861209)
+
 How far does a segmentation model get when it is trained on a handful of
 labelled pixels per image instead of a full mask, and does it matter how those
 pixels are chosen?
@@ -75,6 +77,28 @@ deterministic, so retraining a configuration with the same seed lands close to
 but not on the recorded number. Point sampling itself is deterministic, keyed
 on `(seed, tile index)`. Section 6 of the report covers this and the other
 limitations.
+
+## Citing this work
+
+Archived on Zenodo. The DOI below resolves to the most recent version; each
+release also has its own.
+
+    Ude, O. (2026). Partial cross-entropy for point-supervised land-cover
+    segmentation: the effect of label budget and sampling strategy (v1.0.0).
+    Zenodo. https://doi.org/10.5281/zenodo.22861209
+
+```bibtex
+@software{ude2026partialce,
+  author    = {Ude, Oluwatifunmilayo},
+  title     = {Partial cross-entropy for point-supervised land-cover
+               segmentation: the effect of label budget and sampling strategy},
+  year      = {2026},
+  version   = {v1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22861209},
+  url       = {https://github.com/FunmilayoUde/point-supervised-segmentation}
+}
+```
 
 ## Licence
 
