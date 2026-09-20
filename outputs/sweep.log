@@ -1,0 +1,39 @@
+device mps  arch mobilenet  gamma 2.0
+train 400 tiles  val 250 tiles  12 epochs
+majority-class floor: mIoU 0.0675
+27 runs to go (0 already recorded)
+
+[ 1/27] dense       N=0    seed=0  mIoU 0.4292  epoch  9  4.5 min
+[ 2/27] dense       N=0    seed=1  mIoU 0.3821  epoch 12  5.5 min
+[ 3/27] dense       N=0    seed=2  mIoU 0.4404  epoch 12  5.4 min
+[ 4/27] uniform     N=5    seed=0  mIoU 0.2105  epoch 12  6.0 min
+[ 5/27] uniform     N=5    seed=1  mIoU 0.2331  epoch 10  6.2 min
+[ 6/27] uniform     N=5    seed=2  mIoU 0.2006  epoch  9  6.0 min
+[ 7/27] uniform     N=20   seed=0  mIoU 0.3650  epoch 12  6.1 min
+[ 8/27] uniform     N=20   seed=1  mIoU 0.2294  epoch 12  6.5 min
+[ 9/27] uniform     N=20   seed=2  mIoU 0.3331  epoch 11  6.1 min
+[10/27] uniform     N=50   seed=0  mIoU 0.3965  epoch 12  7.6 min
+[11/27] uniform     N=50   seed=1  mIoU 0.3648  epoch 10  9.0 min
+[12/27] uniform     N=50   seed=2  mIoU 0.1769  epoch 12  9.4 min
+[13/27] uniform     N=200  seed=0  mIoU 0.3992  epoch 12  10.7 min
+[14/27] uniform     N=200  seed=1  mIoU 0.3439  epoch 12  11.9 min
+[15/27] uniform     N=200  seed=2  mIoU 0.4081  epoch 11  11.2 min
+[16/27] stratified  N=5    seed=0  mIoU 0.1413  epoch 12  10.5 min
+[17/27] stratified  N=5    seed=1  mIoU 0.1465  epoch  8  13.5 min
+[18/27] stratified  N=5    seed=2  mIoU 0.1832  epoch 10  11.7 min
+[19/27] stratified  N=20   seed=0  mIoU 0.2577  epoch 10  10.8 min
+[20/27] stratified  N=20   seed=1  mIoU 0.3125  epoch  9  11.7 min
+[21/27] stratified  N=20   seed=2  mIoU 0.2264  epoch 11  5.5 min
+[22/27] stratified  N=50   seed=0  mIoU 0.3450  epoch  8  5.6 min
+[23/27] stratified  N=50   seed=1  mIoU 0.3339  epoch 12  5.2 min
+[24/27] stratified  N=50   seed=2  mIoU 0.3675  epoch 11  5.6 min
+[25/27] stratified  N=200  seed=0  mIoU 0.3462  epoch 12  5.7 min
+[26/27] stratified  N=200  seed=1  mIoU 0.3345  epoch  9  5.1 min
+[27/27] stratified  N=200  seed=2  mIoU 0.3586  epoch 12  5.0 min
+6 extra runs at N=50
+[1/6] uniform     N=50 seed=3  mIoU 0.3644  epoch 11  4.5 min
+[2/6] uniform     N=50 seed=4  mIoU 0.3364  epoch 11  4.6 min
+[3/6] uniform     N=50 seed=5  mIoU 0.4068  epoch  9  4.6 min
+[4/6] stratified  N=50 seed=3  mIoU 0.3616  epoch 12  4.7 min
+[5/6] stratified  N=50 seed=4  mIoU 0.3652  epoch 10  4.9 min
+[6/6] stratified  N=50 seed=5  mIoU 0.3048  epoch 12  4.8 min
