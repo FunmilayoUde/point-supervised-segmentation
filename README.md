@@ -10,8 +10,10 @@ remedy for the severe class imbalance in this data, does not improve mean mIoU
 at any budget tested; it reduces the spread across seeds by roughly a factor of
 three.
 
-The write-up is in
-[`outputs/report/`](outputs/report/Partial_CE_Point_Supervision_Report.pdf).
+**[Read the report (PDF, 10 pages)](outputs/report/Partial_CE_Point_Supervision_Report.pdf)**
+
+![mIoU against label budget, uniform and stratified sampling, with the fully
+supervised ceiling and majority-class floor marked](outputs/fig1_budget_curve.png)
 
 ## The loss
 
@@ -74,7 +76,11 @@ but not on the recorded number. Point sampling itself is deterministic, keyed
 on `(seed, tile index)`. Section 6 of the report covers this and the other
 limitations.
 
-## Data licence
+## Licence
+
+The code in this repository is MIT licensed; see [LICENSE](LICENSE).
+
+That does **not** extend to the data or to figures derived from it.
 
 LoveDA is distributed under CC BY-NC-SA 4.0 and is licensed for academic use
 only. Imagery originates from the Google Earth platform and remains subject to
