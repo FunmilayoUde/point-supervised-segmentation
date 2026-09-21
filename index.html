@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Partial cross-entropy for point-supervised land-cover segmentation</title>
+<meta name="description" content="200 labelled pixels out of 65,536 recovers 92% of fully supervised mIoU on LoveDA. An empirical study of label budget and sampling strategy.">
+<style>
+  :root {
+    --bg: #fbfbf9; --fg: #17201c; --muted: #5f6a64;
+    --rule: #dfe3de; --accent: #17835d; --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121614; --fg: #e9eeea; --muted: #939d97;
+      --rule: #29312d; --accent: #3ec48d; --card: #171d1a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.6 ui-serif, Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 24px 80px; }
+  h1 { font-size: 1.85rem; line-height: 1.25; margin: 0 0 6px; text-wrap: balance; }
+  .by { color: var(--muted); font-size: .95rem; margin: 0 0 28px; }
+  .lede { font-size: 1.12rem; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  figure { margin: 0 0 28px; }
+  img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--card); }
+  figcaption { color: var(--muted); font-size: .88rem; margin-top: 8px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 32px; }
+  a.btn {
+    display: inline-block; padding: 10px 18px; border: 1px solid var(--rule);
+    border-radius: 6px; text-decoration: none; color: var(--fg); background: var(--card);
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: .95rem;
+  }
+  a.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  a.btn:hover { border-color: var(--accent); }
+  a.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  h2 { font-size: 1.05rem; margin: 30px 0 8px; }
+  ul { margin: 0 0 10px; padding-left: 1.15em; }
+  li { margin-bottom: 7px; }
+  footer { border-top: 1px solid var(--rule); margin-top: 36px; padding-top: 16px;
+           color: var(--muted); font-size: .86rem; }
+  footer a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Partial cross-entropy for point-supervised land-cover segmentation</h1>
+  <p class="by">Oluwatifunmilayo Ude · September 2026</p>
+
+  <p class="lede">200 labelled pixels out of 65,536, about 0.3% of the image,
+  recovers 92% of fully supervised mIoU on LoveDA urban tiles.</p>
+  <p class="sub">Class-balanced sampling, the obvious remedy for the class imbalance
+  in this data, does not improve mean mIoU at any budget tested. It cuts the spread
+  across seeds by roughly a factor of three.</p>
+
+  <div class="links">
+    <a class="btn primary" href="outputs/report/Partial_CE_Point_Supervision_Report.pdf">Read the report (PDF)</a>
+    <a class="btn" href="https://github.com/FunmilayoUde/point-supervised-segmentation">Code and results</a>
+    <a class="btn" href="https://doi.org/10.5281/zenodo.22861209">DOI</a>
+  </div>
+
+  <figure>
+    <img src="outputs/fig1_budget_curve.png"
+         alt="mIoU against points per tile for uniform and stratified sampling, with the fully supervised ceiling and majority-class floor marked">
+    <figcaption>What a point budget buys, against a fully supervised ceiling and a
+    majority-class floor. Error bars are the standard deviation across seeds.</figcaption>
+  </figure>
+
+  <h2>What was measured</h2>
+  <ul>
+    <li>33 training runs over two sampling strategies and four budgets (5, 20, 50, 200 points per tile), with three seeds each and six at N=50.</li>
+    <li>Partial focal cross-entropy, verified against <code>F.cross_entropy</code> rather than assumed correct.</li>
+    <li>Evaluation against dense masks on held-out tiles drawn from the same distribution as training.</li>
+  </ul>
+
+  <h2>What was wrong</h2>
+  <ul>
+    <li>Stratified sampling was predicted to help most at small budgets. It hurt most there: five points split across seven classes gives each one pixel, which teaches nothing while removing signal from classes that had it.</li>
+    <li>Rare classes were predicted to stay depressed under every strategy. They recovered to within 94% of the ceiling. Agriculture's weak IoU is a property of the class, not of the supervision.</li>
+  </ul>
+
+  <footer>
+    Code MIT licensed. LoveDA and figures derived from it remain under CC BY-NC-SA 4.0.
+    Dataset: <a href="https://arxiv.org/abs/2110.08733">Wang et al., NeurIPS 2021</a>.
+    Loss: <a href="https://arxiv.org/abs/1804.01346">Tang et al., CVPR 2018</a>.
+  </footer>
+</main>
+</body>
+</html>
